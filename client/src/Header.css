@@ -1,0 +1,43 @@
+.logo {
+  width: 8rem;
+  height: auto;
+  margin-left: 10rem;
+}
+
+.menu-icon {
+  font-size: 20pt;
+}
+
+.person-icon {
+  font-size: 15pt;
+}
+
+.cart-icon {
+  font-size: 15pt;
+}
+
+.ad-div {
+  height: 2rem;
+  background-color: rgb(203, 36, 36);
+  text-align: center;
+}
+
+.ad {
+  text-align: center;
+  justify-content: center;
+  color: white;
+  padding-top: 0.3rem;
+  font-family: Domine, sans-serif;
+}
+
+.sign-in-text {
+  font-family: 'Alumni Sans', sans-serif;
+  font-size: 16pt;
+  font-style: bold;
+}
+
+.cart-text {
+  font-family: 'Alumni Sans', sans-serif;
+  font-size: 16pt;
+  font-style: bold;
+}

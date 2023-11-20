@@ -5,6 +5,7 @@ set client_min_messages to warning;
 drop schema "public" cascade;
 
 create schema "public";
+
 CREATE TABLE "users" (
   "userId" serial PRIMARY KEY,
   "username" text,
@@ -28,7 +29,8 @@ CREATE TABLE "productItem" (
   "categoryId" int,
   "name" text,
   "desc" text,
-  "weight" int,
+  "weightLb" int,
+  "weightOz" int,
   "price" int
 );
 
