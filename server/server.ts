@@ -166,6 +166,31 @@ app.get('/api/productItem/:productItemId', async (req, res, next) => {
   }
 });
 
+app.get('/api/productItems/:categoryId', async (req, res, next) => {
+  try {
+    const categoryId = Number(req.params.categoryId);
+    if (typeof categoryId !== 'number') {
+      throw new ClientError(400, 'productItemId must be a number');
+    }
+    if (categoryId < 1) {
+      throw new ClientError(400, 'productItemId must be a positive number');
+    }
+
+    const sql = `
+    select *
+    from "productItem"
+    where "categoryId" = $1
+    `;
+    const params = [categoryId];
+    const result = await db.query(sql, params);
+    const productItem = result.rows;
+    res.status(200).json(productItem);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 app.post('/api/productItem', async (req, res, next) => {
   try {
     const { categoryId, name, desc, weightLb, weightOz, price } = req.body;

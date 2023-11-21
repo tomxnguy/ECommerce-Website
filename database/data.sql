@@ -44,7 +44,7 @@ values (
   1,
   './backpack1gregory.jpeg',
   'Gregory',
-  'Maven 55 - Mens',
+  'Maven 55 - Men’s',
   2,
   12,
   19000
@@ -75,6 +75,51 @@ values (
   3,
   6,
   17000
+),
+(
+  2,
+  'tent1bigagnes.jpeg',
+  'Big Agnes',
+  'Copper Spur HV UL2',
+  3,
+  2,
+  55000
+),
+(
+  2,
+  'tent2rei.jpeg',
+  'REI Co-Op',
+  'Half-Dome SL 2+',
+  4,
+  6,
+  32900
+),
+(
+  2,
+  'tent3rei.jpeg',
+  'REI Co-Op',
+  'Trail Hut 2',
+  5,
+  12,
+  19000
+),
+(
+  2,
+  'tent4zpacks.jpeg',
+  'Z Packs',
+  'Duplex Zip',
+  1,
+  1,
+  69000
+),
+(
+  2,
+  'tent5msr.jpeg',
+  'MSR',
+  'Access 2',
+  4,
+  1,
+  80000
 );
 
 

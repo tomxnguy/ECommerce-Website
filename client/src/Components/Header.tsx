@@ -2,6 +2,7 @@ import { IoPersonOutline } from 'react-icons/io5';
 import { HiOutlineShoppingCart } from 'react-icons/hi2';
 import './Header.css';
 import Drawer from './Drawer';
+import { Outlet } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -25,6 +26,7 @@ export default function Header() {
       <div className="ad-div flex justify-center w-full">
         <a className="ad">New members can save up to 30% off. Shop now.</a>
       </div>
+      <Outlet />
     </div>
   );
 }

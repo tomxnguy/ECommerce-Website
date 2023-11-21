@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Drawer.css';
 import { IoMenu } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 type Category = {
   categoryId: number;
@@ -48,7 +49,9 @@ export default function Drawer() {
         </div>
         {categories.map((item) => (
           <div onClick={closeDrawer}>
-            <MenuItem key={item.categoryId} item={item} />
+            <Link to={`/productItem/${item.categoryId}`}>
+              <MenuItem key={item.categoryId} item={item} />
+            </Link>
           </div>
         ))}
       </div>
@@ -63,10 +66,14 @@ type MenuDrawerProps = {
   item: Category;
 };
 
+function handleCatalogRoute() {}
+
 function MenuItem({ item }: MenuDrawerProps) {
   return (
     <div className="menu-item-div">
-      <div className="menu-item">{item.name}</div>
+      <div className="menu-item" onClick={handleCatalogRoute}>
+        {item.name}
+      </div>
     </div>
   );
 }
