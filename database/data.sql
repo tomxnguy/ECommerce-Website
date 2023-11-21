@@ -39,15 +39,44 @@ values
   ('Clothing'),
   ('Accessories');
 
-insert into "productItem" ("categoryId", "name", "desc", "weightLb", "weightOz", "price")
+insert into "productItem" ("categoryId", "imageUrl", "name", "desc", "weightLb", "weightOz", "price")
 values (
   1,
+  './backpack1gregory.jpeg',
   'Gregory',
   'Maven 55 - Mens',
   2,
   12,
   19000
+  ),
+ (
+  1,
+  './backpack2osprey.jpeg',
+  'Osprey',
+  'Archeon 45 - Men’s',
+  2,
+  4,
+  16900
+),
+(
+  1,
+  './backpack3granitegear.jpeg',
+  'Granite Gear',
+  'Crown2 60 - Men’s',
+  4,
+  8,
+  34000
+),
+(
+  1,
+  './backpack4kelty.jpeg',
+  'Kelty',
+  'Asher 55 - Womens',
+  3,
+  6,
+  17000
 );
+
 
 insert into "shoppingCarts" ("userId", "productItemId", "quantity")
 values (

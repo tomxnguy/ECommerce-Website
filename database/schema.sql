@@ -27,6 +27,7 @@ CREATE TABLE "userAddresses" (
 CREATE TABLE "productItem" (
   "productItemId" serial PRIMARY KEY,
   "categoryId" int,
+  "imageUrl" text,
   "name" text,
   "desc" text,
   "weightLb" int,

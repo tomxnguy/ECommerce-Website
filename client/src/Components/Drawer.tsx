@@ -1,13 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Drawer.css';
 import { IoMenu } from 'react-icons/io5';
 
-type Props = {
-  drawerItems: string[];
+type Category = {
+  categoryId: number;
+  name: string;
 };
 
-export default function Drawer({ drawerItems }: Props) {
+async function readCategories(): Promise<Category[]> {
+  const response = await fetch('/api/categories');
+  const categories = await response.json();
+  return categories;
+}
+
+export default function Drawer() {
   const [openMenu, setOpenMenu] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    async function getCategories() {
+      try {
+        const entries = await readCategories();
+        setCategories(entries);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getCategories();
+  }, []);
 
   function openDrawer() {
     setOpenMenu(!openMenu);
@@ -26,9 +46,9 @@ export default function Drawer({ drawerItems }: Props) {
         <div>
           <h2 className="menu-heading">Shop</h2>
         </div>
-        {drawerItems.map((item) => (
+        {categories.map((item) => (
           <div onClick={closeDrawer}>
-            <MenuDrawer item={item} />
+            <MenuItem key={item.categoryId} item={item} />
           </div>
         ))}
       </div>
@@ -40,13 +60,13 @@ export default function Drawer({ drawerItems }: Props) {
 }
 
 type MenuDrawerProps = {
-  item: string;
+  item: Category;
 };
 
-function MenuDrawer({ item }: MenuDrawerProps) {
+function MenuItem({ item }: MenuDrawerProps) {
   return (
     <div className="menu-item-div">
-      <div className="menu-item">{item}</div>
+      <div className="menu-item">{item.name}</div>
     </div>
   );
 }

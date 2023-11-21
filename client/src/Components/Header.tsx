@@ -4,12 +4,10 @@ import './Header.css';
 import Drawer from './Drawer';
 
 export default function Header() {
-  const drawerItems = ['About', 'Get Started', 'Sign In'];
-
   return (
-    <div>
-      <div className="header-wrapper shadow-2xl  w-full top-0 flex bg-yellow-100 justify-between">
-        <Drawer drawerItems={drawerItems} />
+    <div className="sticky top-0">
+      <div className="header-wrapper shadow-2xl w-full top-0 flex bg-yellow-100 justify-between">
+        <Drawer />
         <div className="logo-div">
           <img className="logo" src="./public/logo.png" />
         </div>

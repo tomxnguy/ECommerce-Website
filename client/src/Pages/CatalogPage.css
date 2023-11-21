@@ -1,0 +1,27 @@
+.catalog-card-wrapper {
+  font-family: Domine, sans-serif;
+}
+
+.category-header {
+  font-family: Domine, sans-serif;
+  font-size: 30pt;
+}
+
+.catalog-brand {
+  font-size: 20pt;
+}
+
+.image-div {
+  height: 20rem;
+  width: 20rem;
+}
+
+.catalog-img {
+  width: 100%;
+  height: fit-content;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

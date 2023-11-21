@@ -1,0 +1,25 @@
+.adcard {
+  width: 25rem;
+  height: auto;
+}
+
+.adimage-div {
+  width: 24rem;
+  height: auto;
+}
+
+.adcard-img {
+  width: 100%;
+  height: fit-content;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.ad-text {
+  color: red;
+  font-family: Bahiana, sans-serif;
+  font-size: 20pt;
+}
