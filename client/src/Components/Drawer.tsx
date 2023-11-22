@@ -21,8 +21,8 @@ export default function Drawer() {
   useEffect(() => {
     async function getCategories() {
       try {
-        const entries = await readCategories();
-        setCategories(entries);
+        const cats = await readCategories();
+        setCategories(cats);
       } catch (error) {
         console.error(error);
       }

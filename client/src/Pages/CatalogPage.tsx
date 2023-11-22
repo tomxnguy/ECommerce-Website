@@ -1,7 +1,7 @@
 import './CatalogPage.css';
 import { useState, useEffect } from 'react';
-import { toDollars } from '../../to-dollars.tsx';
-import { useParams } from 'react-router-dom';
+import { toDollars } from '../Components/to-dollars.tsx';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
 type ProductItem = {
   productItemId: number;
@@ -50,6 +50,7 @@ export default function CatalogPage() {
           </div>
         ))}
       </div>
+      <Outlet />
     </div>
   );
 }
@@ -61,16 +62,20 @@ type CatalogProps = {
 export function CatalogCard({ item }: CatalogProps) {
   return (
     <div className="catalog-card-wrapper flex-col mt-2 bg-white">
-      <div className="image-div justify-center flex">
-        <img className="catalog-img flex" src={`${item.imageUrl}`} />
-      </div>
-      <div className="catalog-text-div">
-        <p className="catalog-brand flex justify-center ">{item.brand}</p>
-        <p className="catalog-desc flex justify-center">{item.desc}</p>
-        <p className="catalog-price flex justify-center">
-          {toDollars(item.price)}
-        </p>
-      </div>
+      <Link to={`/detail/${item.productItemId}`}>
+        <div className="image-div justify-center flex">
+          <img className="catalog-img flex" src={`${item.imageUrl}`} />
+        </div>
+        <div className="catalog-text-div">
+          <p className="catalog-brand flex justify-center bg-slate-200">
+            {item.brand}
+          </p>
+          <p className="catalog-desc flex justify-center">{item.desc}</p>
+          <p className="catalog-price flex justify-center">
+            {toDollars(item.price)}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }

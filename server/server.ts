@@ -29,6 +29,14 @@ app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello, World!' });
 });
 
+type Product = {
+  productItemId: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+  desc: string;
+};
+
 app.get('/api/users', async (req, res, next) => {
   try {
     const sql = `
@@ -141,7 +149,7 @@ app.get('/api/productItem', async (req, res, next) => {
   }
 });
 
-app.get('/api/productItem/:productItemId', async (req, res, next) => {
+app.get('/api/detail/:productItemId', async (req, res, next) => {
   try {
     const productItemId = Number(req.params.productItemId);
     if (typeof productItemId !== 'number') {
@@ -157,7 +165,7 @@ app.get('/api/productItem/:productItemId', async (req, res, next) => {
     where "productItemId" = $1
     `;
     const params = [productItemId];
-    const result = await db.query(sql, params);
+    const result = await db.query<Product>(sql, params);
     const productItem = result.rows[0];
     res.status(200).json(productItem);
   } catch (error) {
