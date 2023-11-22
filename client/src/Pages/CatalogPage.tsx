@@ -10,6 +10,10 @@ type ProductItem = {
   name: string;
   desc: string;
   price: number;
+  producttype: string;
+  productItem: string;
+  brand: string;
+  category: string;
 };
 
 async function readProductItems(categoryId): Promise<ProductItem[]> {
@@ -37,7 +41,7 @@ export default function CatalogPage() {
   return (
     <div className="catalog-wrapper">
       <h1 className="category-header w-full text-center mt-2 mb-2 bg-slate-200">
-        Backpacks
+        {productItem[0]?.category}
       </h1>
       <div className="w-screen pb-2 pl-2 grid grid-cols-4 place-items-center bg-orange-100">
         {productItem.map((item) => (
@@ -61,7 +65,7 @@ export function CatalogCard({ item }: CatalogProps) {
         <img className="catalog-img flex" src={`${item.imageUrl}`} />
       </div>
       <div className="catalog-text-div">
-        <p className="catalog-brand flex justify-center ">{item.name}</p>
+        <p className="catalog-brand flex justify-center ">{item.brand}</p>
         <p className="catalog-desc flex justify-center">{item.desc}</p>
         <p className="catalog-price flex justify-center">
           {toDollars(item.price)}

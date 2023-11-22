@@ -42,7 +42,7 @@ values
 insert into "productItem" ("categoryId", "imageUrl", "name", "desc", "weightLb", "weightOz", "price")
 values (
   1,
-  './backpack1gregory.jpeg',
+  '/images/backpack1gregory.jpeg',
   'Gregory',
   'Maven 55 - Men’s',
   2,
@@ -51,7 +51,7 @@ values (
   ),
  (
   1,
-  './backpack2osprey.jpeg',
+  '/images/backpack2osprey.jpeg',
   'Osprey',
   'Archeon 45 - Men’s',
   2,
@@ -60,7 +60,7 @@ values (
 ),
 (
   1,
-  './backpack3granitegear.jpeg',
+  '/images/backpack3granitegear.jpeg',
   'Granite Gear',
   'Crown2 60 - Men’s',
   4,
@@ -69,7 +69,7 @@ values (
 ),
 (
   1,
-  './backpack4kelty.jpeg',
+  '/images/backpack4kelty.jpeg',
   'Kelty',
   'Asher 55 - Womens',
   3,
@@ -78,7 +78,7 @@ values (
 ),
 (
   2,
-  'tent1bigagnes.jpeg',
+  '/images/tent1bigagnes.jpeg',
   'Big Agnes',
   'Copper Spur HV UL2',
   3,
@@ -87,7 +87,7 @@ values (
 ),
 (
   2,
-  'tent2rei.jpeg',
+  '/images/tent2rei.jpeg',
   'REI Co-Op',
   'Half-Dome SL 2+',
   4,
@@ -96,7 +96,7 @@ values (
 ),
 (
   2,
-  'tent3rei.jpeg',
+  '/images/tent3rei.jpeg',
   'REI Co-Op',
   'Trail Hut 2',
   5,
@@ -105,7 +105,7 @@ values (
 ),
 (
   2,
-  'tent4zpacks.jpeg',
+  '/images/tent4zpacks.jpeg',
   'Z Packs',
   'Duplex Zip',
   1,
@@ -114,7 +114,43 @@ values (
 ),
 (
   2,
-  'tent5msr.jpeg',
+  '/images/tent5msr.jpeg',
+  'MSR',
+  'Access 2',
+  4,
+  1,
+  80000
+),
+(
+  3,
+  '/images/tent5msr.jpeg',
+  'MSR',
+  'Access 2',
+  4,
+  1,
+  80000
+),
+(
+  4,
+  '/images/tent5msr.jpeg',
+  'MSR',
+  'Access 2',
+  4,
+  1,
+  80000
+),
+(
+  5,
+  '/images/tent5msr.jpeg',
+  'MSR',
+  'Access 2',
+  4,
+  1,
+  80000
+),
+(
+  6,
+  '/images/tent5msr.jpeg',
   'MSR',
   'Access 2',
   4,

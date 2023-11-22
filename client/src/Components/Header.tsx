@@ -2,7 +2,7 @@ import { IoPersonOutline } from 'react-icons/io5';
 import { HiOutlineShoppingCart } from 'react-icons/hi2';
 import './Header.css';
 import Drawer from './Drawer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -10,7 +10,9 @@ export default function Header() {
       <div className="header-wrapper shadow-2xl w-full top-0 flex bg-yellow-100 justify-between">
         <Drawer />
         <div className="logo-div">
-          <img className="logo" src="./public/logo.png" />
+          <Link to="/">
+            <img className="logo" src="/images/logo.png" />
+          </Link>
         </div>
         <div className="right-hand-buttons flex">
           <div className="sign-in-div flex mr-8">

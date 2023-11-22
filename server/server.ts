@@ -177,8 +177,11 @@ app.get('/api/productItems/:categoryId', async (req, res, next) => {
     }
 
     const sql = `
-    select *
+    select *,
+            "productItem"."name" as "brand",
+           "categories"."name" as "category"
     from "productItem"
+    join "categories" using ("categoryId")
     where "categoryId" = $1
     `;
     const params = [categoryId];

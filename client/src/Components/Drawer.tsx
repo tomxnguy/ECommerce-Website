@@ -66,14 +66,10 @@ type MenuDrawerProps = {
   item: Category;
 };
 
-function handleCatalogRoute() {}
-
 function MenuItem({ item }: MenuDrawerProps) {
   return (
     <div className="menu-item-div">
-      <div className="menu-item" onClick={handleCatalogRoute}>
-        {item.name}
-      </div>
+      <div className="menu-item">{item.name}</div>
     </div>
   );
 }
