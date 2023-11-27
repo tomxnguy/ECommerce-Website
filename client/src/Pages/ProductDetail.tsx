@@ -113,7 +113,7 @@ export default function ProductDetail() {
                   </div>
                 </div>
                 <div className="weight-box flex border border-solid border-black ml-8 mt-10">
-                  <div className="weight-text flex flex-col w-full  h-full justify-around py-2">
+                  <div className="weight-text flex flex-col w-full  h-full justify-around py-2 px-3">
                     <div className="flex">
                       <div className="flex-col pr-1">
                         {item.sizes.map((item) => (

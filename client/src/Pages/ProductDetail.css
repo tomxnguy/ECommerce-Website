@@ -51,7 +51,7 @@
 }
 
 .weight-box {
-  width: 12rem;
+  width: fit-content;
   height: 8rem;
   align-items: center;
 }
