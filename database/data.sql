@@ -38,23 +38,23 @@ values
   ('Clothing'),
   ('Accessories');
 
-insert into "productItem" ("categoryId", "imageUrl", "name", "desc", "weightLb", "weightOz", "price")
+insert into "productItem" ("categoryId", "imageUrl", "name", "desc", "weights", "size", "price")
 values (
   1,
   '/images/backpack1gregory.jpeg',
   'Gregory',
   'Maven 55 - Men’s',
-  2,
-  12,
+  '[70, 72, 80]',
+  '["S", "M", "L"]',
   19000
   ),
- (
+  (
   1,
   '/images/backpack2osprey.jpeg',
   'Osprey',
   'Archeon 45 - Men’s',
-  2,
-  4,
+  '[66, 72, 88]',
+  '["S", "M", "L"]',
   16900
 ),
 (
@@ -62,26 +62,26 @@ values (
   '/images/backpack3granitegear.jpeg',
   'Granite Gear',
   'Crown2 60 - Men’s',
-  4,
-  8,
+  '[72, 80, 86]',
+  '["S", "M", "L"]',
   34000
 ),
 (
   1,
   '/images/backpack4kelty.jpeg',
   'Kelty',
-  'Asher 55 - Womens',
-  3,
-  6,
+  'Asher 55 - Women’s',
+  '[54, 60, 76]',
+  '["S", "M", "L"]',
   17000
 ),
 (
   1,
   '/images/backpack5deuter.jpeg',
   'Deuter',
-  'Futura 32 - Womens',
-  3,
-  2,
+  'Futura 32 - Women’s',
+  '[50, 54, 60]',
+  '["S", "M", "L"]',
   17000
 ),
 (
@@ -89,8 +89,8 @@ values (
   '/images/tent1bigagnes.jpeg',
   'Big Agnes',
   'Copper Spur HV UL2',
-  3,
-  2,
+  '[50]',
+  '["One-Size"]',
   55000
 ),
 (
@@ -98,8 +98,8 @@ values (
   '/images/tent2rei.jpeg',
   'REI Co-Op',
   'Half-Dome SL 2+',
-  4,
-  6,
+  '[70]',
+  '["One-Size"]',
   32900
 ),
 (
@@ -107,8 +107,8 @@ values (
   '/images/tent3rei.jpeg',
   'REI Co-Op',
   'Trail Hut 2',
-  5,
-  12,
+  '[92]',
+  '["One-Size"]',
   19000
 ),
 (
@@ -116,8 +116,8 @@ values (
   '/images/tent4zpacks.jpeg',
   'Z Packs',
   'Duplex Zip',
-  1,
-  1,
+  '[17]',
+  '["One-Size"]',
   69000
 ),
 (
@@ -125,8 +125,8 @@ values (
   '/images/tent5msr.jpeg',
   'MSR',
   'Access 2',
-  4,
-  1,
+  '[65]',
+  '["One-Size"]',
   80000
 ),
 (
@@ -134,8 +134,8 @@ values (
   '/images/poles1.jpeg',
   'Black Diamond',
   'Pursuit Trekking Poles',
-  1,
-  8,
+  '[24]',
+  '["One-Size"]',
   17000
 ),
 (
@@ -143,17 +143,17 @@ values (
   '/images/poles2.jpeg',
   'Black Diamond',
   'Distance Carbon FLZ Trekking Poles',
-  2,
-  1,
+  '[33]',
+  '["One-Size"]',
   15000
 ),
 (
   3,
   '/images/poles3.jpeg',
   'LEKI',
-  'Womens Micro Vario Carbon Pole',
-  1,
-  1,
+  'Women’s Micro Vario Carbon Pole',
+  '[17]',
+  '["One-Size"]',
   16000
 ),
 (
@@ -161,8 +161,8 @@ values (
   '/images/poles4.jpeg',
   'Komperdell',
   'Trail Pro Contour Poles',
-  1,
-  2,
+  '[34]',
+  '["One-Size"]',
   13000
 ),
 (
@@ -170,8 +170,8 @@ values (
   '/images/poles5.jpeg',
   'Black Diamond',
   'Alpine Carbon Cork Trekking Poles',
-  1,
-  4,
+  '[20]',
+  '["One-Size"]',
   12000
 ),
 (
@@ -179,8 +179,8 @@ values (
   '/images/clothes3.jpeg',
   'Patagonia',
   'Men’s Down Sweater Jacket',
-  0,
-  13,
+  '[13, 14, 15]',
+  '["S", "M", "L"]',
   27900
 ),
 (
@@ -188,8 +188,8 @@ values (
   '/images/clothes2.jpeg',
   'Carhartt',
   'Men’s Washed Duck Bartlett Jacket',
-  4,
-  10,
+  '[74, 80, 86]',
+  '["S", "M", "L"]',
   27900
 ),
 (
@@ -197,8 +197,8 @@ values (
   '/images/clothes1.jpeg',
   'Patagonia',
   'Men’s Classic Retro-X Jacket',
-  3,
-  8,
+  '[56, 60, 64]',
+  '["S", "M", "L"]',
   22900
 ),
 (
@@ -206,8 +206,8 @@ values (
   '/images/clothes4.jpeg',
   'Arcteryx',
   'Men’s Beta Insulated Jacket',
-  4,
-  6,
+  '[70, 76, 82]',
+  '["S", "M", "L"]',
   75000
 ),
 (
@@ -215,8 +215,8 @@ values (
   '/images/clothes5.jpeg',
   'Fjallraven',
   'Men’s Singi Down Jacket',
-  6,
-  15,
+  '[111, 122, 128]',
+  '["S", "M", "L"]',
   80000
 ),
 (
@@ -224,45 +224,45 @@ values (
   '/images/acc1.jpeg',
   'My Medic',
   'Wound Closure Kit',
-  0,
-  12,
-  14995
+  '[12]',
+  '["One-Size"]',
+  15000
 ),
 (
   5,
   '/images/acc2.jpeg',
   'Black Diamond',
   'Storm 500-R Headlamp',
-  0,
-  3,
-  7495
+  '[3]',
+  '["One-Size"]',
+  7400
 ),
 (
   5,
   '/images/acc3.jpeg',
   'MSR',
   'Reactor 2.5L Stove System',
-  0,
-  6,
-  30995
+  '[6]',
+  '["One-Size"]',
+  31000
 ),
 (
   5,
   '/images/acc4.jpeg',
   'Mammut',
   ' Alugator Light Shovel',
-  2,
-  2,
-  7495
+  '[2]',
+  '["One-Size"]',
+  7500
 ),
 (
   5,
   '/images/acc5.jpeg',
   'CamelBak',
   'Fusion Reservoir Tru Waterproof Zipper',
-  0,
-  3,
-  5595
+  '[3]',
+  '["One-Size"]',
+  5600
 );
 
 insert into "shoppingCarts" ("userId", "productItemId", "quantity")

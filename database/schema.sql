@@ -30,8 +30,8 @@ CREATE TABLE "productItem" (
   "imageUrl" text,
   "name" text,
   "desc" text,
-  "weightLb" int,
-  "weightOz" int,
+  "weights" text,
+  "size" text,
   "price" int
 );
 

@@ -17,7 +17,7 @@
 
 .size-select {
   height: 3rem;
-  width: 3.5rem;
+  min-width: 3.5rem;
   align-items: center;
   border-radius: 15%;
 }

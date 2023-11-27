@@ -12,18 +12,24 @@ type Product = {
   imageUrl: string;
   price: number;
   desc: string;
+  size: string;
+  sizes: number[];
+  weight: number;
+  weights: number[];
 };
 
 async function fetchProduct(productItemId: number): Promise<Product> {
   const response = await fetch(`/api/detail/${productItemId}`);
   const productItem = await response.json();
+  productItem.sizes = JSON.parse(productItem.size);
+  productItem.weights = JSON.parse(productItem.weights);
   return productItem;
 }
-console.log(fetchProduct(12));
 
 export default function ProductDetail() {
   const { productItemId } = useParams();
   const [item, setItem] = useState<Product>();
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     async function loadProduct(productItemId: number) {
@@ -38,7 +44,7 @@ export default function ProductDetail() {
       loadProduct(+productItemId);
     }
   }, [productItemId]);
-  console.log({ item });
+
   if (!item) {
     return null;
   }
@@ -79,22 +85,28 @@ export default function ProductDetail() {
                     <div>
                       <p className="detail-select mt-12">Select a Size:</p>
                       <div className="sizes flex mt-2">
-                        <SizeButton />
-                        <SizeButton />
-                        <SizeButton />
+                        {item.sizes.map((item) => (
+                          <SizeButton key={item} text={item} />
+                        ))}
                       </div>
                     </div>
                     <div>
                       <p className="detail-quantity mt-5">Quantity:</p>
                       <div className="quantity-div flex mt-2">
                         <div className="plus-button flex justify-center">
-                          <PiPlusCircleBold />
+                          <PiMinusCircleBold
+                            className="cursor-pointer"
+                            onClick={() => setQuantity(quantity - 1)}
+                          />
                         </div>
                         <div className="quantity-shown bg-slate-300 flex justify-center mx-2">
-                          1
+                          <div>{quantity}</div>
                         </div>
                         <div className="minus-button flex justify-center">
-                          <PiMinusCircleBold />
+                          <PiPlusCircleBold
+                            className="cursor-pointer"
+                            onClick={() => setQuantity(quantity + 1)}
+                          />
                         </div>
                       </div>
                     </div>
@@ -102,9 +114,27 @@ export default function ProductDetail() {
                 </div>
                 <div className="weight-box flex border border-solid border-black ml-8 mt-10">
                   <div className="weight-text flex flex-col w-full  h-full justify-around py-2">
-                    <p>S: 2lbs 7oz</p>
-                    <p>S: 2lbs 7oz</p>
-                    <p>S: 2lbs 7oz</p>
+                    <div className="flex">
+                      <div className="flex-col pr-1">
+                        {item.sizes.map((item) => (
+                          <p key={item}>{item}:</p>
+                        ))}
+                      </div>
+                      <div className="flex-col pr-2">
+                        {item.weights.map((weight) => (
+                          <p key={weight}>
+                            {Number(weight / 16).toFixed(0)} lbs
+                          </p>
+                        ))}
+                      </div>
+                      <div className="flex-col">
+                        {item.weights.map((weight) => (
+                          <p key={weight}>
+                            {Number(16 - (weight % 16)).toFixed(0)} oz
+                          </p>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -121,8 +151,10 @@ export default function ProductDetail() {
   );
 }
 
-export function SizeButton() {
+export function SizeButton({ text }) {
   return (
-    <div className="size-select bg-slate-300 flex justify-center mr-4">S</div>
+    <div className="size-select bg-slate-300 flex justify-center mr-4 px-2 w-fit">
+      {text}
+    </div>
   );
 }

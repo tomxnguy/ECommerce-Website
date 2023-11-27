@@ -19,10 +19,13 @@ export default function Header() {
             <IoPersonOutline className="person-icon flex mr-2 my-8" />
             <a className="sign-in-text flex my-7">Sign In</a>
           </div>
-          <div className="cart-div flex mr-10">
+          <button className="cart-div flex mr-10">
             <HiOutlineShoppingCart className="cart-icon flex mr-2 my-8" />
             <a className="cart-text flex my-7">Cart</a>
-          </div>
+            <div className="rounded-full bg-red-700 absolute translate-x-1 w-7 flex justify-center align-middle mt-4 text-white">
+              3
+            </div>
+          </button>
         </div>
       </div>
       <div className="ad-div flex justify-center w-full">

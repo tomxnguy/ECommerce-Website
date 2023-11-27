@@ -17,23 +17,23 @@ export default function HomePage() {
       </div>
       <div className="w-screen grid grid-cols-3 gap-3 place-items-center bg-orange-100">
         <AdCard
-          adPhoto="/images/GregoryBackpack.jpeg"
+          adPhoto="images/GregoryBackpack.jpeg"
           adText="Shop all brands of backpacks!"
         />
         <AdCard
-          adPhoto="/images/reitent.jpeg"
+          adPhoto="images/reitent.jpeg"
           adText="Get the newest model tents available!"
         />
         <AdCard
-          adPhoto="/images/SalomonBoot.jpeg"
+          adPhoto="images/SalomonBoot.jpeg"
           adText="Brand new boot releases here!"
         />
-        <AdCard adPhoto="/images/Poles.jpeg" adText="Best prices here!" />
+        <AdCard adPhoto="images/Poles.jpeg" adText="Best prices here!" />
         <AdCard
-          adPhoto="/images/patagonia.jpeg"
+          adPhoto="images/patagonia.jpeg"
           adText="Find the right fit for every adventure!"
         />
-        <AdCard adPhoto="/images/cookware.jpg" adText="AND MORE!" />
+        <AdCard adPhoto="images/cookware.jpg" adText="AND MORE!" />
       </div>
     </div>
   );
