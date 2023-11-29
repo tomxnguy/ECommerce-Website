@@ -2,17 +2,12 @@ import { useState, useEffect } from 'react';
 import './Drawer.css';
 import { IoMenu } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { readCategories } from '../api.ts';
 
-type Category = {
+export type Category = {
   categoryId: number;
   name: string;
 };
-
-async function readCategories(): Promise<Category[]> {
-  const response = await fetch('/api/categories');
-  const categories = await response.json();
-  return categories;
-}
 
 export default function Drawer() {
   const [openMenu, setOpenMenu] = useState(false);

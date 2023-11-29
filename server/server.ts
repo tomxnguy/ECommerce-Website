@@ -278,6 +278,72 @@ app.get('/api/shoppingCarts/:shoppingCartsId', async (req, res, next) => {
   }
 });
 
+app.post('/api/cart/', async (req, res, next) => {
+  try {
+    const {
+      userId,
+      productItemId,
+      imageUrl,
+      price,
+      name,
+      desc,
+      size,
+      weight,
+      quantity,
+    } = req.body;
+    if (typeof productItemId !== 'number') {
+      throw new ClientError(400, 'productItemId must be a number');
+    }
+    if (productItemId < 1) {
+      throw new ClientError(400, 'productItemId must be a positive number');
+    }
+    const sql = `
+    INSERT INTO "shoppingCarts" ("userId", "productItemId", "imageUrl", "price", "name", "desc", "size", "weight", "quantity")
+    values ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    returning *
+    `;
+    const params = [
+      userId,
+      productItemId,
+      imageUrl,
+      price,
+      name,
+      desc,
+      size,
+      weight,
+      quantity,
+    ];
+    const result = await db.query(sql, params);
+    const cartItem = result.rows[0];
+    res.status(200).json(cartItem);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+app.delete('/api/cartItem/:shoppingCartId', async (req, res) => {
+  try {
+    const { shoppingCartId } = req.params;
+    if (!Number.isInteger(+shoppingCartId)) {
+      res.status(400).json({ error: `${shoppingCartId} not an integer` });
+      return;
+    }
+    const sql = `
+  DELETE
+  from "shoppingCarts"
+  where "shoppingCartId" = $1
+  returning *
+  `;
+    const params = [shoppingCartId];
+    const result = await db.query(sql, params);
+    const deleteItem = result.rows[0];
+    res.status(200).json(deleteItem);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 /**
  * Serves React's index.html if no api route matches.
  *

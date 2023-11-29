@@ -2,8 +2,9 @@ import './CatalogPage.css';
 import { useState, useEffect } from 'react';
 import { toDollars } from '../Components/to-dollars.tsx';
 import { useParams, Link, Outlet } from 'react-router-dom';
+import { readProductItems } from '../api.ts';
 
-type ProductItem = {
+export type ProductItem = {
   productItemId: number;
   categoryId: number;
   imageUrl: string;
@@ -15,12 +16,6 @@ type ProductItem = {
   brand: string;
   category: string;
 };
-
-async function readProductItems(categoryId): Promise<ProductItem[]> {
-  const response = await fetch(`/api/productItems/${categoryId}`);
-  const productItems = await response.json();
-  return productItems;
-}
 
 export default function CatalogPage() {
   const { categoryId } = useParams();

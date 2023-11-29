@@ -1,0 +1,39 @@
+.cart-details-div {
+  font-family: Domine, sans-serif;
+}
+
+.cart-brand,
+.cart-price {
+  font-size: 18pt;
+}
+
+.total-calc {
+  font-family: Domine, sans-serif;
+  font-size: 16pt;
+}
+
+.checkout-button {
+  width: 19rem;
+  height: 3rem;
+  background-color: rgb(7, 86, 12);
+  align-items: center;
+  font-family: Domine, sans-serif;
+  color: white;
+  font-size: 20pt;
+  border-radius: 10pt;
+}
+
+.remove-item {
+  width: 14rem;
+  height: 3rem;
+  background-color: rgb(200, 13, 13);
+  align-items: center;
+  font-family: Domine, sans-serif;
+  color: white;
+  border-radius: 10pt;
+}
+
+.empty-message {
+  font-family: Domine, sans-serif;
+  font-size: 20pt;
+}

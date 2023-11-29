@@ -30,7 +30,7 @@ CREATE TABLE "productItem" (
   "imageUrl" text,
   "name" text,
   "desc" text,
-  "weights" text,
+  "weight" text,
   "size" text,
   "price" int
 );
@@ -44,6 +44,12 @@ CREATE TABLE "shoppingCarts" (
   "shoppingCartId" serial PRIMARY KEY,
   "userId" int,
   "productItemId" int,
+  "imageUrl" text,
+  "price" int,
+  "name" text,
+  "desc" text,
+  "size" text,
+  "weight" text,
   "quantity" int
 );
 

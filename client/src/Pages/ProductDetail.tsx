@@ -5,31 +5,25 @@ import { PiMinusCircleBold } from 'react-icons/pi';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toDollars } from '../Components/to-dollars.tsx';
+import { addToCart, fetchProduct } from '../api.ts';
 
-type Product = {
+export type Product = {
   productItemId: number;
   name: string;
   imageUrl: string;
   price: number;
   desc: string;
   size: string;
-  sizes: number[];
+  sizes: string[];
   weight: number;
   weights: number[];
 };
-
-async function fetchProduct(productItemId: number): Promise<Product> {
-  const response = await fetch(`/api/detail/${productItemId}`);
-  const productItem = await response.json();
-  productItem.sizes = JSON.parse(productItem.size);
-  productItem.weights = JSON.parse(productItem.weights);
-  return productItem;
-}
 
 export default function ProductDetail() {
   const { productItemId } = useParams();
   const [item, setItem] = useState<Product>();
   const [quantity, setQuantity] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     async function loadProduct(productItemId: number) {
@@ -44,6 +38,15 @@ export default function ProductDetail() {
       loadProduct(+productItemId);
     }
   }, [productItemId]);
+
+  async function handleAddToCart() {
+    if (!item) {
+      return;
+    }
+    const size = item.sizes[activeIndex];
+    const weight = item.weights[activeIndex];
+    addToCart(item, quantity, size, weight);
+  }
 
   if (!item) {
     return null;
@@ -85,19 +88,25 @@ export default function ProductDetail() {
                     <div>
                       <p className="detail-select mt-12">Select a Size:</p>
                       <div className="sizes flex mt-2">
-                        {item.sizes.map((item) => (
-                          <SizeButton key={item} text={item} />
-                        ))}
+                        <SizeButton
+                          item={item}
+                          activeIndex={activeIndex}
+                          onSelect={setActiveIndex}
+                        />
                       </div>
                     </div>
                     <div>
                       <p className="detail-quantity mt-5">Quantity:</p>
                       <div className="quantity-div flex mt-2">
                         <div className="plus-button flex justify-center">
-                          <PiMinusCircleBold
-                            className="cursor-pointer"
-                            onClick={() => setQuantity(quantity - 1)}
-                          />
+                          {quantity > 1 ? (
+                            <PiMinusCircleBold
+                              className="cursor-pointer"
+                              onClick={() => setQuantity(quantity - 1)}
+                            />
+                          ) : (
+                            <PiMinusCircleBold />
+                          )}
                         </div>
                         <div className="quantity-shown bg-slate-300 flex justify-center mx-2">
                           <div>{quantity}</div>
@@ -123,15 +132,13 @@ export default function ProductDetail() {
                       <div className="flex-col pr-2">
                         {item.weights.map((weight) => (
                           <p key={weight}>
-                            {Number(weight / 16).toFixed(0)} lbs
+                            {Math.floor(Number(weight / 16))} lbs.
                           </p>
                         ))}
                       </div>
                       <div className="flex-col">
                         {item.weights.map((weight) => (
-                          <p key={weight}>
-                            {Number(16 - (weight % 16)).toFixed(0)} oz
-                          </p>
+                          <p key={weight}>{Number(weight % 16)} oz.</p>
                         ))}
                       </div>
                     </div>
@@ -140,7 +147,7 @@ export default function ProductDetail() {
               </div>
               <div className="add-to-cart-div flex justify-center">
                 <div className="add-to-cart flex justify-center mt-8 mb-6">
-                  <button>Add to Cart</button>
+                  <button onClick={handleAddToCart}>Add to Cart</button>
                 </div>
               </div>
             </div>
@@ -151,10 +158,24 @@ export default function ProductDetail() {
   );
 }
 
-export function SizeButton({ text }) {
-  return (
-    <div className="size-select bg-slate-300 flex justify-center mr-4 px-2 w-fit">
-      {text}
-    </div>
-  );
+type SizeButtonProps = {
+  item: Product;
+  activeIndex: number;
+  onSelect: (index: number) => void;
+};
+
+export function SizeButton({ item, activeIndex, onSelect }: SizeButtonProps) {
+  const buttons = item.sizes.map((item, index) => (
+    <button
+      className={
+        activeIndex === index
+          ? 'size-select bg-green-500 justify-center mr-4 px-2 w-fit'
+          : 'size-select bg-slate-400 justify-center mr-4 px-2 w-fit'
+      }
+      key={item}
+      onClick={() => onSelect(index)}>
+      {item}
+    </button>
+  ));
+  return <div>{buttons}</div>;
 }

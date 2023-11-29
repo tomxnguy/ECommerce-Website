@@ -38,7 +38,7 @@ values
   ('Clothing'),
   ('Accessories');
 
-insert into "productItem" ("categoryId", "imageUrl", "name", "desc", "weights", "size", "price")
+insert into "productItem" ("categoryId", "imageUrl", "name", "desc", "weight", "size", "price")
 values (
   1,
   '/images/backpack1gregory.jpeg',
@@ -62,7 +62,7 @@ values (
   '/images/backpack3granitegear.jpeg',
   'Granite Gear',
   'Crown2 60 - Men’s',
-  '[72, 80, 86]',
+  '[72, 74, 82]',
   '["S", "M", "L"]',
   34000
 ),
@@ -264,10 +264,3 @@ values (
   '["One-Size"]',
   5600
 );
-
-insert into "shoppingCarts" ("userId", "productItemId", "quantity")
-values (
-  1,
-  1,
-  5
-)

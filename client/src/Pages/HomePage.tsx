@@ -3,11 +3,11 @@ import './HomePage.css';
 
 export default function HomePage() {
   const carouselImages = [
-    '/images/hiking-carousel-1.jpeg',
-    '/images/hiking-carousel-2.jpeg',
-    '/images/hiking-carousel-3.jpeg',
-    '/images/hiking-carousel-4.jpeg',
-    '/images/hiking-carousel-5.jpeg',
+    'images/hiking-carousel-1.jpeg',
+    'images/hiking-carousel-2.jpeg',
+    'images/hiking-carousel-3.jpeg',
+    'images/hiking-carousel-4.jpeg',
+    'images/hiking-carousel-5.jpeg',
   ];
 
   return (
@@ -24,10 +24,7 @@ export default function HomePage() {
           adPhoto="images/reitent.jpeg"
           adText="Get the newest model tents available!"
         />
-        <AdCard
-          adPhoto="images/SalomonBoot.jpeg"
-          adText="Brand new boot releases here!"
-        />
+        <AdCard adPhoto="images/acc4.jpeg" adText="Brand new releases!" />
         <AdCard adPhoto="images/Poles.jpeg" adText="Best prices here!" />
         <AdCard
           adPhoto="images/patagonia.jpeg"
