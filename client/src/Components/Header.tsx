@@ -10,7 +10,7 @@ export default function Header() {
       <div className="header-wrapper shadow-2xl w-full top-0 flex bg-yellow-100 justify-between">
         <Drawer />
         <div className="logo-div">
-          <Link to="/homePage">
+          <Link to="/">
             <img className="logo" src="images/logo.png" />
           </Link>
         </div>
