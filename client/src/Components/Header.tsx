@@ -11,7 +11,7 @@ export default function Header() {
         <Drawer />
         <div className="logo-div">
           <Link to="/">
-            <img className="logo" src="/images/logo.png" />
+            <img className="logo" src="images/logo.png" />
           </Link>
         </div>
         <div className="right-hand-buttons flex">
