@@ -225,7 +225,7 @@ values (
   'My Medic',
   'Wound Closure Kit',
   '[12]',
-  '["One-Size"]',
+  '["One-Size]',
   15000
 ),
 (
@@ -263,4 +263,13 @@ values (
   '[3]',
   '["One-Size"]',
   5600
+),
+(
+  5,
+  '/images/acc6.jpeg',
+  'Mountain House',
+  'Mountain House Beef Stew',
+  '[4]',
+  '["One-Size"]',
+  1200
 );
