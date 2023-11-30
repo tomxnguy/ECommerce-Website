@@ -35,8 +35,8 @@ export default function Header({ indicator }: HeaderProps) {
           </Link>
         </div>
       </div>
-      <div className="ad-div flex justify-center w-full">
-        <a className="ad hover:underline cursor-pointer">
+      <div className="h-8 bg-red-500 text-center flex justify-center w-full">
+        <a className="text-center text-white pt-1 hover:underline cursor-pointer">
           New members can save up to 30% off. Shop now.
         </a>
       </div>
