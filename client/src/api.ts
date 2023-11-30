@@ -66,3 +66,17 @@ export async function deleteFromCart(shoppingCartId) {
   const cartItem = await response.json();
   return cartItem;
 }
+
+export async function updateCartQuantity(shoppingCartId, quantity) {
+  const response = await fetch(`/api/cartItem/${shoppingCartId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      quantity,
+    }),
+  });
+  const updatedCart = await response.json();
+  return updatedCart;
+}

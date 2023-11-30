@@ -19,7 +19,7 @@ export type Product = {
   weights: number[];
 };
 
-export default function ProductDetail() {
+export default function ProductDetail({ onAdd }) {
   const { productItemId } = useParams();
   const [item, setItem] = useState<Product>();
   const [quantity, setQuantity] = useState(1);
@@ -45,7 +45,8 @@ export default function ProductDetail() {
     }
     const size = item.sizes[activeIndex];
     const weight = item.weights[activeIndex];
-    addToCart(item, quantity, size, weight);
+    await addToCart(item, quantity, size, weight);
+    onAdd(quantity);
   }
 
   if (!item) {

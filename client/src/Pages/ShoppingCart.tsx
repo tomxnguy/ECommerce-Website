@@ -2,7 +2,7 @@ import { PiPlusCircleBold } from 'react-icons/pi';
 import { PiMinusCircleBold } from 'react-icons/pi';
 import { useState, useEffect } from 'react';
 import './ShoppingCart.css';
-import { readCart, deleteFromCart } from '../api.ts';
+import { readCart, deleteFromCart, updateCartQuantity } from '../api.ts';
 import { toDollars } from '../Components/to-dollars.tsx';
 
 export type CartProps = {
@@ -17,7 +17,7 @@ export type CartProps = {
   quantity: number;
 };
 
-export default function ShoppingCart() {
+export default function ShoppingCart({ onRemove, onUpdate }) {
   const [cartItem, setCartItem] = useState<CartProps[]>([]);
 
   useEffect(() => {
@@ -38,8 +38,8 @@ export default function ShoppingCart() {
 
   cartItem.forEach((item) => {
     totalItems += item.quantity;
-    totalWeight += Number(item.weight);
-    subTotal += item.price;
+    totalWeight += Number(item.weight) * item.quantity;
+    subTotal += item.price * item.quantity;
   });
 
   function handleUpdateDelete(item: CartProps) {
@@ -47,6 +47,14 @@ export default function ShoppingCart() {
       c.shoppingCartId === item.shoppingCartId ? false : true
     );
     setCartItem(updatedCart);
+  }
+
+  function handleUpdateQuantity(item: CartProps, delta: number) {
+    const updatedCart = cartItem.map((c) =>
+      c.shoppingCartId === item.shoppingCartId ? item : c
+    );
+    setCartItem(updatedCart);
+    onUpdate(delta);
   }
 
   console.log('cartItem', cartItem);
@@ -66,6 +74,8 @@ export default function ShoppingCart() {
                   onDelete={handleUpdateDelete}
                   key={item.shoppingCartId}
                   item={item}
+                  onRemove={onRemove}
+                  onQuantityUpdate={handleUpdateQuantity}
                 />
               ))
             )}
@@ -97,15 +107,32 @@ export default function ShoppingCart() {
 export type CartCardProps = {
   item: CartProps;
   onDelete: (item: CartProps) => void;
+  onRemove: (count) => void;
+  onQuantityUpdate: (item: CartProps, delta: number) => void;
 };
 
-function ItemCard({ item, onDelete }: CartCardProps) {
-  const [itemQuantity, setItemQuantity] = useState(Number(item.quantity));
-
+function ItemCard({
+  item,
+  onDelete,
+  onRemove,
+  onQuantityUpdate,
+}: CartCardProps) {
   async function handleDelete() {
     try {
       await deleteFromCart(item.shoppingCartId);
       onDelete(item);
+      onRemove(item.quantity);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleUpdateQuantity(quantity) {
+    const delta = quantity - item.quantity;
+    try {
+      await updateCartQuantity(item.shoppingCartId, quantity);
+      item.quantity = quantity;
+      onQuantityUpdate(item, delta);
     } catch (error) {
       console.error(error);
     }
@@ -133,22 +160,22 @@ function ItemCard({ item, onDelete }: CartCardProps) {
         <p className="mt-4">Quantity: </p>
         <div className="quantity-div mt-2 flex">
           <div className="plus-button flex justify-center">
-            {itemQuantity > 1 ? (
+            {item.quantity > 1 ? (
               <PiMinusCircleBold
                 className="cursor-pointer"
-                onClick={() => setItemQuantity(itemQuantity - 1)}
+                onClick={() => handleUpdateQuantity(item.quantity - 1)}
               />
             ) : (
               <PiMinusCircleBold />
             )}
           </div>
           <div className="quantity-shown bg-slate-300 flex justify-center mx-2">
-            <div>{itemQuantity}</div>
+            <div>{item.quantity}</div>
           </div>
           <div className="minus-button flex justify-center">
             <PiPlusCircleBold
               className="cursor-pointer"
-              onClick={() => setItemQuantity(itemQuantity + 1)}
+              onClick={() => handleUpdateQuantity(item.quantity + 1)}
             />
           </div>
         </div>

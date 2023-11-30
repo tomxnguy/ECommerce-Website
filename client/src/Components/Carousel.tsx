@@ -14,7 +14,7 @@ export default function Carousel({ carouselImages }: Props) {
   }, [carouselImages, activeIndex]);
 
   useEffect(() => {
-    const timeoutHandle = setTimeout(nextPhoto, 3000);
+    const timeoutHandle = setTimeout(nextPhoto, 2000);
     return () => clearTimeout(timeoutHandle);
   }, [nextPhoto]);
 

@@ -344,6 +344,37 @@ app.delete('/api/cartItem/:shoppingCartId', async (req, res) => {
   }
 });
 
+app.patch('/api/cartItem/:shoppingCartId', async (req, res, next) => {
+  try {
+    const shoppingCartId = Number(req.params.shoppingCartId);
+    if (!Number.isInteger(shoppingCartId) || shoppingCartId < 1) {
+      throw new ClientError(400, 'shoppingCartId must be a positive integer');
+    }
+    const { quantity } = req.body;
+    if (typeof quantity !== 'number') {
+      throw new ClientError(400, 'quantity (number) is required');
+    }
+    const sql = `
+      update "shoppingCarts"
+        set "quantity" = $1
+        where "shoppingCartId" = $2
+        returning *
+    `;
+    const params = [quantity, shoppingCartId];
+    const result = await db.query(sql, params);
+    const currentQuantity = result.rows;
+    if (!currentQuantity) {
+      throw new ClientError(
+        404,
+        `cannot find currentQuantity with shoppingCartId ${shoppingCartId}`
+      );
+    }
+    res.json(currentQuantity);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 /**
  * Serves React's index.html if no api route matches.
  *
