@@ -43,12 +43,12 @@ type AdCardProps = {
 
 function AdCard({ adText, adPhoto }: AdCardProps) {
   return (
-    <div className="adcard flex-col rounded-lg bg-slate-300">
-      <div className="adimage-div flex mt-2 ml-2 justify-center">
-        <img className="adcard-img flex justify-center" src={`${adPhoto}`} />
+    <div className="w-[25rem] flex-col rounded-lg bg-slate-300">
+      <div className="w-[24rem] flex mt-2 ml-2 justify-center">
+        <img className="flex w-full h-fit justify-center" src={`${adPhoto}`} />
       </div>
-      <div className="ad-text-div">
-        <p className="ad-text flex justify-center my-4">{adText}</p>
+      <div>
+        <p className="text-red text-2xl flex justify-center my-4">{adText}</p>
       </div>
     </div>
   );
