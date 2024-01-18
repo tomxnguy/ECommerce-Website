@@ -12,7 +12,7 @@ export default function Header({ indicator }: HeaderProps) {
     <div className="sticky top-0">
       <div className="header-wrapper shadow-2xl w-full top-0 flex bg-yellow-100 justify-between">
         <Drawer />
-        <div className="flex mr-8">
+        <div className="flex">
           <Link to="/">
             <img className="logo" src="/images/logo.png" />
           </Link>
