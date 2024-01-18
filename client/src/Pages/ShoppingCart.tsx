@@ -57,8 +57,6 @@ export default function ShoppingCart({ onRemove, onUpdate }) {
     onUpdate(delta);
   }
 
-  console.log('cartItem', cartItem);
-
   return (
     <div className="flex m-2 justify-center">
       <div className="w-11/12 h-auto flex columns-2 border-solid border-2 border-black">

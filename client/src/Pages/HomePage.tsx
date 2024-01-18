@@ -12,7 +12,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <div>
+      <div className="my-1">
         <Carousel carouselImages={carouselImages} />
       </div>
       <div className="w-screen grid grid-cols-3 gap-3 place-items-center bg-orange-100">
