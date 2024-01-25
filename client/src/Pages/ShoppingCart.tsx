@@ -57,6 +57,17 @@ export default function ShoppingCart({ onRemove, onUpdate }) {
     onUpdate(delta);
   }
 
+  async function handleCheckout() {
+    try {
+      cartItem.map((item) => {
+        deleteFromCart(item.shoppingCartId);
+      });
+      setCartItem([]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="flex m-2 justify-center">
       <div className="w-11/12 h-auto flex columns-2 border-solid border-2 border-black">
@@ -92,7 +103,7 @@ export default function ShoppingCart({ onRemove, onUpdate }) {
             <p className="mt-6">Order Total: {toDollars(subTotal * 1.09)}</p>
             <div className="checkout-div mt-2 flex justify-center">
               <div className="checkout-button flex justify-center mt-8 mb-6">
-                <button>Proceed to Checkout</button>
+                <button onClick={handleCheckout}>Proceed to Checkout</button>
               </div>
             </div>
           </div>
