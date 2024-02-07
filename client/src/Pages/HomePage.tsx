@@ -24,7 +24,7 @@ export default function HomePage() {
           adPhoto="images/reitent.jpeg"
           adText="Get the newest model tents available!"
         />
-        <AdCard adPhoto="images/acc4.jpeg" adText="Brand new releases!" />
+        <AdCard adPhoto="images/acc4.jpeg" adText="Brand new releases!!" />
         <AdCard adPhoto="images/Poles.jpeg" adText="Best prices here!" />
         <AdCard
           adPhoto="images/patagonia.jpeg"
