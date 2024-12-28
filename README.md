@@ -1,6 +1,6 @@
 # LFZ Co-Op
 
-LFZ Co-Op is a full-stack application designed to streamline collaborative efforts, built with TypeScript, Express.js for the back end, and Tailwind CSS for the front end. This repository contains all the necessary components and instructions to set up and run the application.
+LFZ Co-Op is a full-stack application designed to streamline collaborative efforts, built with TypeScript, Express.js for the back end, and Tailwind CSS for the front end. It mimics the functions of an e-commerce website selling outdoor products. IT is my first full-stack project and first project using typescript. This repository contains all the necessary components and instructions to set up and run the application. 
 
 ## Features
 
